@@ -1,0 +1,16 @@
+{
+  "name": "middleman",
+  "version": "1.0.0",
+  "description": "this will be able to read the income messages and trigger actions",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BrianPhiri (brianphiri.9523@gmail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.1",
+    "firebase": "^4.6.0",
+    "request": "^2.83.0"
+  }
+}
