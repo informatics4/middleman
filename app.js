@@ -38,16 +38,18 @@ amqp.connect(AMQP_URL, function(err, conn){
 
 function checkCommands(message){
     checkAlert(message.class)
-    // checkRoom(message)
+    checkRoom(message)
 }
 
+const url = 'https://cryptic-sands-49288.herokuapp.com/api/v1/'
+
 function checkAlert(message){
-    request('http://localhost:1337/api/v1/notifications?case='+message,function(error, response, body){
+    request(url+'notifications?case='+message,function(error, response, body){
         if(error) throw error
         let b = JSON.parse(body)
         for(var i = 0; i < b.length; i++){
 
-            request('http://localhost:1337/api/v1/contacts?role='+b[i].notify, function(error, response, body){
+            request(url+'contacts?role='+b[i].notify, function(error, response, body){
                 if(error) throw error
                 var d = JSON.parse(body)
                 console.log(d)
@@ -63,7 +65,7 @@ function checkAlert(message){
 }
 
 function notify(who, email){
-    request('http://localhost:1337/api/v1/emails/'+who+'/'+email, function(error, response, body){
+    request(url+'emails/'+who+'/'+email, function(error, response, body){
         if(error) throw error
         console.log(body)
     })
