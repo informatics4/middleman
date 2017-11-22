@@ -11,11 +11,14 @@ var config = {
     messagingSenderId: "127657070211"
   };
 
+
+
 var app = firebase.initializeApp(config)
 
 var database  = firebase.database();
 
 const AMQP_URL = "amqp://ehlbpomi:AODIFxJKO0QmTUqke2_FHjy5AKKcQ5ed@wasp.rmq.cloudamqp.com/ehlbpomi"
+
 amqp.connect(AMQP_URL, function(err, conn){
     if(err) throw err;
 
@@ -72,7 +75,8 @@ function notify(who, email){
 }
 
 function checkRoom(message) {
-    saveToFirebase(message)
+
+    storeLogs(message)
 }
 
 function saveToFirebase(message) {
